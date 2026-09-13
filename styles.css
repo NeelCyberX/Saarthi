@@ -1,0 +1,118 @@
+/* BharatLend AI - Custom Design System & Accessibility */
+:root {
+  --primary: #1e3a8a;
+  --primary-light: #3b82f6;
+  --bharat-orange: #ea580c;
+  --bharat-green: #15803d;
+  --accent-gold: #d97706;
+  --bg-soft: #f8fafc;
+  --surface: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f1f5f9;
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* High contrast touch targets for Bharat users */
+.touch-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.touch-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Audio Wave Animation when Voice Bot is speaking */
+@keyframes soundwave {
+  0% { height: 6px; }
+  50% { height: 24px; }
+  100% { height: 6px; }
+}
+
+.sound-bar {
+  display: inline-block;
+  width: 4px;
+  background-color: #3b82f6;
+  border-radius: 9999px;
+  animation: soundwave 1.2s infinite ease-in-out;
+}
+.sound-bar:nth-child(2) { animation-delay: 0.2s; }
+.sound-bar:nth-child(3) { animation-delay: 0.4s; }
+.sound-bar:nth-child(4) { animation-delay: 0.1s; }
+.sound-bar:nth-child(5) { animation-delay: 0.3s; }
+
+/* Stress Meter Gradient & Needle */
+.stress-meter-bg {
+  background: linear-gradient(to right, #22c55e 0%, #eab308 50%, #ef4444 100%);
+  height: 12px;
+  border-radius: 9999px;
+  position: relative;
+}
+
+.stress-needle {
+  position: absolute;
+  top: -4px;
+  width: 20px;
+  height: 20px;
+  background-color: #0f172a;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transform: translateX(-50%);
+  transition: left 0.5s ease-out;
+}
+
+/* Pulse badge for live alerts */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+.pulse-indicator {
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+
+/* Custom Modal Backdrops */
+.modal-overlay {
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print Friendly Sanction Letter */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #sanctionModal, #sanctionModal * {
+    visibility: visible;
+  }
+  #sanctionModal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
